@@ -51,3 +51,33 @@ Key benefits of Agentic workflows
 
 # Module 2: Reflection Design Pattern
 
+![Reflection Agentic Char Generation](images/reflection-chart-generation.png)
+
+## Evaluation
+
+- Objective evals
+  - Code-based evals are easier
+  - Need a dataset of ground truth examples
+- Subjective evals
+  - Use LLM as a judge
+  - Rubric-based grading is better
+
+### LLM as a judge
+
+![Rubric grading](images/llm-judge-rubric.png)
+
+## Using external feedback
+
+![External feedback](images/external-feedback-gain.png)
+
+# Module 3: Tool Use
+
+![Tool use examples](images/tool-use-examples.png)
+
+## MCP
+
+# Practical tips for building Agentic AI
+
+## Evaluations (evals)
+
+
