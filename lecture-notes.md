@@ -80,4 +80,99 @@ Key benefits of Agentic workflows
 
 ## Evaluations (evals)
 
+![Two axes of Evals](images/two-axes-evals.png)
 
+- Quick and dirty is ok to start
+- As you find places where your evals fail to capture human judgement as to what system is better, us that as an opportunity to improve the metric
+- Look for places where performance is worse than humans
+
+![Gold talking poitns - Evals](images/eval-tips-goldtalkingpoints.png)
+
+## Error analysis and prioritizing next steps
+
+![Example of error causes](images/samples-error-causes.png)
+
+| Prompt                                   | Search Terms      | Search Result                           | Picking 5 best sources  | ... |
+| ---------------------------------------- | ----------------- | --------------------------------------- | ----------------------- | --- |
+| Recent development in black hole science |                   | Too many blog posts, not enough papers  |                         |     |
+| Renting vs buying a home in Seattle      |                   |                                         | missed well known blogs |     |
+| Robotics for harvesting fruits           | Terms too generic | Websites for elementary school students |                         |     |
+| ...                                      | ...               | ...                                     | ...                     | ... |
+| Batteries for electric vehicles          |                   | ONly selected US-based companies        | Missed magazine         |     |
+|                                          | 5%                | 45%                                     | 10%                     | ... |
+
+Tips:
+
+- Develop a habit of looking at traces
+- Carry out error analysis to figure out what component performed poorly, leading to a poor final output
+- Use error analysis output to decide where to focus efforts
+
+
+# Patterns for Highly autonomous agents
+
+## Planning workflows
+
+![Customer Service Assistant](images/planning-workflows-cust-srv-assist.png)
+
+![Email Assistant](images/planning-workflows-email-assist.png)
+
+## Creating and Executing LLM plans
+
+### Formatting plan as JSON
+
+System Prompt:
+```text
+You have access to the following tools:
+
+{descriptions of tools}
+
+Create a step-by-step plan in Json format.
+Each step should have the following items: step number, description, tool name, and arguments.
+```
+
+Query:
+```text
+Do you have any round sunglasses in stock that are under $100?
+```
+
+-> LMM -> Plan:
+```json
+{
+    "plan": [
+        {
+            "step": 1,
+            "description": "Find round sunglasses",
+            "tool": "get_item_descriptions",
+            "arguments": { "query": "round glasses" }
+        },
+        {
+            "step": 2,
+            "description": "Check available stock",
+            "tool": "check_inventory",
+            "arguments": { "items": "results from step 1" }
+        },
+        ...
+    ]
+}
+```
+
+### Planning with code execution
+
+![Planning Benchmark](images/planning-with-code-advantage.png)
+
+## Multi-agentic workflows
+
+![Multi-agent planning](images/planning-with-multi-agents.png)
+
+![Other communication Patterns](images/multi-agent-patterns.png)
+
+
+# Summary
+
+- Why Agentic AI
+- Agentic Design Patterns:
+  - Reflection pattern
+  - Tool-use pattern
+  - Planning pattern
+  - Multi-agent pattern
+- Evals, error analysis
